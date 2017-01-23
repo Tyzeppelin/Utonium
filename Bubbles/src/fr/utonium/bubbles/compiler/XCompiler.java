@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/**
- * Created by francois on 22/01/2017.
- */
 public class XCompiler {
 
     static XCompiler INSTANCE = null;

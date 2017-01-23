@@ -40,11 +40,11 @@ public class Check {
                 String r = compiler.run(test.get("call"));
 
                 if (r.equals(test.get("return"))) {
-                    System.out.println("["+ counter++ + "/" + len + "] : OK");
+                    System.out.println("["+ ++counter + "/" + len + "] : OK");
                 }
                 else {
-                    System.out.println("["+ counter++ + "/" + len + "] : FAIL");
-                    System.out.println("\t expected : " + test.get("return") + " but got : " + r);
+                    System.out.println("["+ ++counter + "/" + len + "] : FAIL");
+                    System.out.println("\t expected : \"" + test.get("return").replace("\n", "\\n") + "\" but got : \"" + r.replace("\n", "\\n") + "\"");
                 }
 
                 //System.out.println(r + " " + test.get("return"));
