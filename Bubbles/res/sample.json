@@ -1,0 +1,9 @@
+{
+  "root_dir": "res/tests-classes",
+  "files" : ["res/tests-classes/Test.java", "res/tests-classes/Fun.java"],
+  "expected" : [
+    {"class" : "Fun", "method" : "met", "return" : "42"},
+    {"class" : "Fun", "method" : "ho", "return" : "Je suis triste"},
+    {"class" : "Fun", "method" : "de", "params" : ["1"], "return" : "4.1415"}
+  ]
+}
