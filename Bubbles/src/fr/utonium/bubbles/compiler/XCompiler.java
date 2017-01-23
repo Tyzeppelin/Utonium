@@ -24,7 +24,7 @@ public class XCompiler {
         return INSTANCE;
     }
 
-    public String run(String[] command) throws Exception {
+    public String run(String command) throws IOException {
         Process current_p = runtime.exec(command);
         BufferedReader out = new BufferedReader(new InputStreamReader(current_p.getInputStream()));
         String res = "";
@@ -33,6 +33,7 @@ public class XCompiler {
             while ((line = out.readLine()) != null){
                 res += "\n"+ line;
             }
+            out.close();
         }catch (IOException e) {
             e.printStackTrace();
         }

@@ -3,8 +3,8 @@ public class Test {
     public Test() {
     }
 
-    public static int main(String[] var0) {
+    public static void  main(String[] var0) {
         System.out.println("Hello world !!");
-        return 0;
+        //return 0;
     }
 }

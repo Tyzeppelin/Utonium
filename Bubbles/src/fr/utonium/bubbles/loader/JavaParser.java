@@ -10,11 +10,11 @@ import java.io.FileReader;
 
 import java.util.*;
 
-public class Parser {
+public class JavaParser {
 
     private JSONObject file;
 
-    public Parser(String path){
+    public JavaParser(String path){
 
         JSONTokener jsonparser = null;
         try {

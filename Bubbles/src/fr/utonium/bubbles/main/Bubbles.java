@@ -1,10 +1,8 @@
 package fr.utonium.bubbles.main;
 
-import fr.utonium.bubbles.compiler.Compiler;
-import fr.utonium.bubbles.compiler.JCompiler;
-import fr.utonium.bubbles.loader.Parser;
+import fr.utonium.bubbles.loader.Check;
+import fr.utonium.bubbles.loader.XParser;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,38 +39,16 @@ public class Bubbles {
         System.out.println(ret1 + " " + ret2 + " " + ret3);
         */
 
-        //TODO: check args
+        XParser p = new XParser("res/sample.json");
 
-        Parser p = new Parser("res/sample.json");
+        String compilationCall = p.getCompile();
+        List<HashMap<String, String>> tests = p.getExpected();
 
-        Compiler com = JCompiler.getInstance();
-        com.setFiles(p.getRootDirectory(), p.getFiles());
+        Check ch = Check.getInstance();
 
-        com.compile();
+        ch.generate(compilationCall);
+        System.out.println("Done compiling");
 
-        System.out.println("Done");
-
-        List<HashMap<String, Object>> exp = p.getExpected();
-        System.out.println(exp);
-        for (HashMap<String, Object> c: exp) {
-            System.out.println(c);
-            if (c.keySet().contains("params")){
-                try {
-                    Object ret = com.run((String) c.get("class"), (String) c.get("method"), (Object[])c.get("params"));
-                    System.out.println(ret + "==" + c.get("return"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            else {
-                try {
-                    Object ret = com.run((String) c.get("class"), (String) c.get("method"));
-                    System.out.println(ret + "==" + c.get("return"));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        System.out.println("YOLO");
+        ch.checkAll(tests);
     }
 }
